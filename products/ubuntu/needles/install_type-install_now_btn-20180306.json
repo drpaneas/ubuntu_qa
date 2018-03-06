@@ -1,0 +1,15 @@
+{
+  "properties": [],
+  "tags": [
+    "install_now_btn"
+  ],
+  "area": [
+    {
+      "xpos": 884,
+      "ypos": 555,
+      "width": 85,
+      "height": 21,
+      "type": "match"
+    }
+  ]
+}

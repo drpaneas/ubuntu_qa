@@ -1,0 +1,15 @@
+{
+  "properties": [],
+  "tags": [
+    "install_ubuntu_btn"
+  ],
+  "area": [
+    {
+      "xpos": 688,
+      "ypos": 418,
+      "width": 139,
+      "height": 17,
+      "type": "match"
+    }
+  ]
+}

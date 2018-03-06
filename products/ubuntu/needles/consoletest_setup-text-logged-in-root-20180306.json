@@ -1,0 +1,17 @@
+{
+  "properties": [],
+  "tags": [
+    "text-logged-in-root",
+    "text-login",
+    "tty6-selected"
+  ],
+  "area": [
+    {
+      "xpos": 0,
+      "ypos": 49,
+      "width": 104,
+      "height": 19,
+      "type": "match"
+    }
+  ]
+}
