@@ -13,18 +13,31 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, see <http://www.gnu.org/licenses/>.
 
-#use base "opensusebasetest";
 use base 'basetest';
 use strict;
 use testapi;
+use ubuntu;
+
 sub run {
 
-    # Verify that Live GNOME environment has been loaded
-    assert_screen 'generic_desktop';
+    gnome_shutdown;
+    # Click on the right up corner
+    #assert_and_click 'gnome_out';
 
-    # Hide the mouse cursor
-    mouse_hide;
+    # Click on the Turn-Off icon
+    #assert_and_click 'gnome_shutdown';
 
+    # Select the Power-Off
+    #assert_and_click 'gnome_shutdown_ok';
+
+    # Last messages that appear
+    #if (check_var('INSTALL_TYPE', 'try')) {
+    #    assert_screen 'medium';
+    #    send_key 'ret';
+    #}
+
+    # Make sure the VM it's dead
+    #assert_shutdown(300);
 }
 
 sub test_flags {

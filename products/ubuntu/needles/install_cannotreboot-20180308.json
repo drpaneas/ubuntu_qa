@@ -1,0 +1,15 @@
+{
+  "area": [
+    {
+      "xpos": 303,
+      "ypos": 2,
+      "width": 534,
+      "height": 15,
+      "type": "match"
+    }
+  ],
+  "tags": [
+    "cannotreboot"
+  ],
+  "properties": []
+}

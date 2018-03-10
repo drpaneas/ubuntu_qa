@@ -1,0 +1,15 @@
+{
+  "area": [
+    {
+      "xpos": 125,
+      "ypos": 130,
+      "width": 80,
+      "height": 11,
+      "type": "match"
+    }
+  ],
+  "tags": [
+    "bios"
+  ],
+  "properties": []
+}

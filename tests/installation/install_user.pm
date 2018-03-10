@@ -13,17 +13,37 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, see <http://www.gnu.org/licenses/>.
 
-#use base "opensusebasetest";
 use base 'basetest';
 use strict;
 use testapi;
+
 sub run {
 
-    # Verify that Live GNOME environment has been loaded
-    assert_screen 'generic_desktop';
+    assert_screen 'install_user';
 
-    # Hide the mouse cursor
-    mouse_hide;
+    # Your name
+    assert_and_click 'your_name';
+    type_string 'Panos Georgiadis';
+
+    # Your computer's name
+    assert_screen 'computer_name';
+
+    # Pick a username
+    assert_screen 'install_username';
+
+    # Choose a password
+    assert_and_click 'install_password';
+    type_string '123456789';
+
+    # Confirm your password
+    assert_and_click 'install_confirm';
+    type_string '123456789';
+
+    # Require my password to login
+    assert_screen 'require_passwd_login';
+
+    # Click continue btn
+    assert_and_click 'continue';
 
 }
 

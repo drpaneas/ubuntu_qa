@@ -13,17 +13,14 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, see <http://www.gnu.org/licenses/>.
 
-#use base "opensusebasetest";
 use base 'basetest';
 use strict;
 use testapi;
+
 sub run {
 
-    # Verify that Live GNOME environment has been loaded
-    assert_screen 'generic_desktop';
-
-    # Hide the mouse cursor
-    mouse_hide;
+    # Install is complete
+    assert_screen "install_complete", 300;
 
 }
 

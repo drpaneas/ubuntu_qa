@@ -1,0 +1,15 @@
+{
+  "properties": [],
+  "tags": [
+    "require_passwd_login"
+  ],
+  "area": [
+    {
+      "xpos": 429,
+      "ypos": 459,
+      "width": 223,
+      "height": 19,
+      "type": "match"
+    }
+  ]
+}

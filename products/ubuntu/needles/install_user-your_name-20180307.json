@@ -1,0 +1,15 @@
+{
+  "tags": [
+    "your_name"
+  ],
+  "area": [
+    {
+      "xpos": 342,
+      "ypos": 244,
+      "width": 423,
+      "height": 35,
+      "type": "match"
+    }
+  ],
+  "properties": []
+}

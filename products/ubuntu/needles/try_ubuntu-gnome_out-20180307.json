@@ -1,0 +1,15 @@
+{
+  "properties": [],
+  "tags": [
+    "gnome_out"
+  ],
+  "area": [
+    {
+      "xpos": 971,
+      "ypos": 3,
+      "width": 20,
+      "height": 19,
+      "type": "match"
+    }
+  ]
+}

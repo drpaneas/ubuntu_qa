@@ -1,0 +1,17 @@
+{
+  "area": [
+    {
+      "xpos": 235,
+      "ypos": 323,
+      "width": 52,
+      "height": 49,
+      "type": "match"
+    }
+  ],
+  "properties": [
+    "workaround"
+  ],
+  "tags": [
+    "install_user"
+  ]
+}

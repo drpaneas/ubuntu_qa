@@ -1,0 +1,15 @@
+{
+  "properties": [],
+  "tags": [
+    "gdm_login"
+  ],
+  "area": [
+    {
+      "xpos": 446,
+      "ypos": 676,
+      "width": 151,
+      "height": 42,
+      "type": "match"
+    }
+  ]
+}

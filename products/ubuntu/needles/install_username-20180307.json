@@ -1,0 +1,15 @@
+{
+  "properties": [],
+  "tags": [
+    "install_username"
+  ],
+  "area": [
+    {
+      "xpos": 305,
+      "ypos": 334,
+      "width": 286,
+      "height": 32,
+      "type": "match"
+    }
+  ]
+}

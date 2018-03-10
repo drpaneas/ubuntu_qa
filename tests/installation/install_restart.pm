@@ -13,18 +13,49 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, see <http://www.gnu.org/licenses/>.
 
-#use base "opensusebasetest";
 use base 'basetest';
 use strict;
 use testapi;
+
 sub run {
 
-    # Verify that Live GNOME environment has been loaded
-    assert_screen 'generic_desktop';
+    # Install is complete, reboot
+    assert_and_click "rebootnow", 'left', 300;
 
-    # Hide the mouse cursor
-    mouse_hide;
+    # Please remove the installation medium, then press ENTER:
+    if (check_screen('medium', 10)) {
+        assert_screen 'medium';
+        send_key 'ret';
+    }
+    else {
+        record_soft_failure "Nothing happens";
+        # Workaround
+        send_key "ctrl-alt-f3";
+        send_key "ctrl-alt-delete";
+        if (check_screen('cannotreboot', 60)) {
+            record_soft_failure "systemd cannot umount device";
+        }
+        power('reset');
+        assert_screen [qw(bios gdm_login)], 120;
+    }
 
+
+    sleep 10;
+
+    if (check_screen('medium', 10)) {
+        record_soft_failure "Nothing happens";
+        # Workaround
+        send_key "ctrl-alt-f3";
+        send_key "ctrl-alt-delete";
+        if (check_screen('cannotreboot', 60)) {
+            record_soft_failure "systemd cannot umount device";
+        }
+        power('reset');
+        assert_screen [qw(bios gdm_login)], 120;
+    }
+    else {
+        assert_screen [qw(bios gdm_login)], 120;
+    }
 }
 
 sub test_flags {

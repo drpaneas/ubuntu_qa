@@ -13,17 +13,25 @@
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, see <http://www.gnu.org/licenses/>.
 
-#use base "opensusebasetest";
 use base 'basetest';
 use strict;
 use testapi;
 sub run {
 
-    # Verify that Live GNOME environment has been loaded
-    assert_screen 'generic_desktop';
+    # Gnome Login screen for Ubuntu
+    assert_screen 'gdm_login';
+
+    # Login
+    assert_and_click 'gdm_user';
+    assert_and_click 'gdm_pass';
+    type_string '123456789';
+    send_key 'ret';
 
     # Hide the mouse cursor
     mouse_hide;
+
+    # Verify that Gnome desktop is loaded
+    assert_screen 'gnome_activities';
 
 }
 
