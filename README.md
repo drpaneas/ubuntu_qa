@@ -1,6 +1,6 @@
-# openQA Ubuntu 17.10.1
+# Test Ubuntu 17.10.1 using openQA
 
-## Run openQA
+## Run openQA container
 
 **Note**: You need docker.
 
@@ -26,7 +26,7 @@ docker run -d --name $user-openqa_webui \
 sleep 5; curl -X POST http://localhost:$webport/login
 
 # Start one worker
-docker run -d --privileged --name $user-openqa_worker5 \
+docker run -d --privileged --name $user-openqa_worker \
               --link $user-openqa_webui:openqa-webui \
               --volumes-from $user-openqa_webui \
               binarysequence/openqa-worker-x86_64
@@ -68,7 +68,7 @@ localhost:/var/lib/docker/volumes/generic-Tests/_data/ubuntu # git clone https:/
 
 Go to [URL](https://www.ubuntu.com/desktop/1710) and download
 the ISO for **Ubuntu 17.10**. Then *move* the file into the
-**assets** folder:
+**assets** directory, and place it under the **iso** folder:
 
 ```bash
 mv /home/drpaneas/Downloads/ubuntu-17.10.1-desktop-amd64.iso /var/lib/docker/volumes/generic-Assets/_data/iso
@@ -82,13 +82,14 @@ we need to make sure that the directory has the correct ownership:
 ```bash
 # cd /var/lib/docker/volumes/generic-Tests/_data/ubuntu/products/ubuntu
 # chown -R 496:nogroup needles/
+```
 
-Then, let's make sure that our openqa-worker can save logs, video,
+Then, let's make sure that our openqa-worker can save logs, videos,
 qcow2 images and other assets. To do this, just give everything
-for free because I don't remember the correct permissions atm:
+for free *because I don't remember the correct permissions atm*:
 
 ```bash
-# cd /var/lib/docker/volumes/generic-Asset
+# cd /var/lib/docker/volumes/generic-Assets
 # chmod -R 777 _data/
 ```
 
@@ -135,9 +136,10 @@ WORKER_CLASS=qemu_x86_64
 
 Click at **Logged in as Demo** and this pop-up a menu of options.
 Choose **Testsuites**. Then click at **New Testsuite** and create
-3 of them:
+**3** of them:
 
-*Name*:desktop_live
+*Name*: desktop_live
+
 Settings:
 ```
 INSTALL_TYPE=try
@@ -153,6 +155,7 @@ QEMU_COMPRESS_QCOW2=1
 ```
 
 *Name*: gnome_tests
+
 Settings:
 ```
 BOOT_HDD_IMAGE=1
@@ -172,7 +175,7 @@ Sub name: Ubuntu 17.10
 ```
 
 Click on **Ubuntu 17.10** job group and then click at
-**Test new medium as part of this group**.
+**Test new medium as part of this group**. Create **3** of them:
 
 ```
 Medium: ubuntu-17.10-desktop-amd64
@@ -199,7 +202,8 @@ openqa-worker container:
 docker exec generic-openqa_worker openqa-client --host http://openqa-webui isos post DISTRI=ubuntu VERSION=17.10 FLAVOR=desktop ARCH=amd64
 ```
 
-Then go to the web interface to monitor the results.
+Then open Firefox and go to the web interface
+to monitor the results.
 
 
 
