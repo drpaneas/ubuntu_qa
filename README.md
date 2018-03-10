@@ -1,6 +1,6 @@
 # Test Ubuntu 17.10.1 using openQA
 
-openQA is an automated test tool for operating systems and the engine
+[openQA] is an automated test tool for operating systems and the engine
 at the heart of openSUSE's automated testing initiative. This is an
 independent project created for demo and teaching purposes of openQA
 to the Ubuntu world.
@@ -144,3 +144,4 @@ the results.
 
 
 [live demo]: https://youtube.com
+[openQA]: http://open.qa/
