@@ -21,23 +21,6 @@ use ubuntu;
 sub run {
 
     gnome_shutdown;
-    # Click on the right up corner
-    #assert_and_click 'gnome_out';
-
-    # Click on the Turn-Off icon
-    #assert_and_click 'gnome_shutdown';
-
-    # Select the Power-Off
-    #assert_and_click 'gnome_shutdown_ok';
-
-    # Last messages that appear
-    #if (check_var('INSTALL_TYPE', 'try')) {
-    #    assert_screen 'medium';
-    #    send_key 'ret';
-    #}
-
-    # Make sure the VM it's dead
-    #assert_shutdown(300);
 }
 
 sub test_flags {
