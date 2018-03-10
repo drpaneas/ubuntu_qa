@@ -1,6 +1,6 @@
 # Test Ubuntu 17.10.1 using openQA
 
-## Run openQA container
+## 1. Run openQA container
 
 **Note**: You need docker running and working properly!
 
@@ -37,7 +37,7 @@ This is the openQA web interface. Make sure that your worker
 seems to be online.
 
 
-## Pull the tests and the assets
+## 2. Pull the tests and the assets
 
 The two docker containers have created two directories:
 
@@ -93,7 +93,7 @@ for free *because I don't remember the correct permissions atm*:
 # chmod -R 777 _data/
 ```
 
-## Manage the web interface
+## 3. Create the testing-plan
 
 ### Create medium
 
@@ -196,10 +196,10 @@ Testsuite: desktop_live
 Machine: 64bit
 ```
 
-## Run the tests
+## 4. Start testing
 
 Use the `openqa-client` utility which is installed into our
-openqa-worker container:
+openqa-worker container to schedule the tests:
 
 ```bash
 docker exec generic-openqa_worker openqa-client --host http://openqa-webui isos post DISTRI=ubuntu VERSION=17.10 FLAVOR=desktop ARCH=amd64
