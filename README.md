@@ -1,5 +1,14 @@
 # Test Ubuntu 17.10.1 using openQA
 
+openQA is an automated test tool for operating systems and the engine
+at the heart of openSUSE's automated testing initiative. This is an
+independent project created for demo and teaching purposes of openQA
+to the Ubuntu world.
+
+See our [live demo].
+
+----
+
 ## 1. Run openQA container
 
 **Note**: You need docker running and working properly!
@@ -95,105 +104,29 @@ for free *because I don't remember the correct permissions atm*:
 
 ## 3. Create the testing-plan
 
-### Create medium
-
-Open your browser and go to the openQA web-interface.
-
-Click at **Logged in as Demo** and this pop-up a menu of options.
-Choose **Medium types**. Then click at **New Medium**.
+Although you can do this via the web interface, it's easier to use
+a script to dump the template over there:
 
 ```bash
- =========================================================================
-| Distri | Version | Flavor | Arch | Settings                             |
-|--------|---------|--------|------| -------------------------------------|
-| ubuntu | 17.10   | desktop| amd64| ISO=ubuntu-17.10.1-desktop-amd64.iso |
- =========================================================================
+# docker exec -it generic-openqa_worker /usr/share/openqa/script/load_templates --host http://openqa-webui /var/lib/openqa/tests/ubuntu/templates
 ```
 
-### Create machine
-
-Click at **Logged in as Demo** and this pop-up a menu of options.
-Choose **Machines**. Then click at **New Machine**
+Expected output, similar to this:
 
 ```bash
-Name: 64bit
-Backend: qemu
+{
+  JobTemplates => { added => 3, of => 3 },
+  Machines     => { added => 1, of => 1 },
+  Products     => { added => 1, of => 1 },
+  TestSuites   => { added => 3, of => 3 },
+}
 ```
 
-Settings:
+To make sure that everything went smooth, you can open Firefox and browse
+the dashboard:
 
 ```bash
-CDMODEL=ide-cd
-HDDSIZEGB=25
-QEMUCPU=Haswell-noTSX
-QEMUCPUS=1
-QEMURAM=2048
-QEMUVGA=qxl
-WORKER_CLASS=qemu_x86_64
-```
-
-### Create Testsuite
-
-Click at **Logged in as Demo** and this pop-up a menu of options.
-Choose **Testsuites**. Then click at **New Testsuite** and create
-**3** of them:
-
-*Name*: desktop_live
-
-Settings:
-
-```bash
-INSTALL_TYPE=try
-```
-
-*Name*: desktop_installation
-
-Settings:
-
-```bash
-INSTALL_TYPE=install
-PUBLISH_HDD_1=ubuntu.qcow2
-QEMU_COMPRESS_QCOW2=1
-```
-
-*Name*: gnome_tests
-
-Settings:
-
-```bash
-BOOT_HDD_IMAGE=1
-HDD_1=ubuntu.qcow2
-START_AFTER_TEST=desktop_installation
-TEST_TYPE=GUI
-```
-
-### Create Job Groups
-
-Click at **Logged in as Demo** and this pop-up a menu of options.
-Choose **Job Groups**. Then click at **+** symbol to add a new.
-
-```bash
-Add folder: Ubuntu
-Sub name: Ubuntu 17.10
-```
-
-Click on **Ubuntu 17.10** job group and then click at
-**Test new medium as part of this group**. Create **3** of them:
-
-```bash
-Medium: ubuntu-17.10-desktop-amd64
-Testsuite: desktop_installation
-Machine: 64bit
-```
-```bash
-Medium: ubuntu-17.10-desktop-amd64
-Testsuite: gnome_tests
-Machine: 64bit
-```
-```bash
-Medium: ubuntu-17.10-desktop-amd64
-Testsuite: desktop_live
-Machine: 64bit
+$ firefox http://$HOSTNAME/admin/{products,machines,test_suites,groups}
 ```
 
 ## 4. Start testing
@@ -205,11 +138,9 @@ openqa-worker container to schedule the tests:
 docker exec generic-openqa_worker openqa-client --host http://openqa-webui isos post DISTRI=ubuntu VERSION=17.10 FLAVOR=desktop ARCH=amd64
 ```
 
-Then open Firefox and go to the web interface
-to monitor the results.
+Then open Firefox and go to the web interface to monitor
+the results.
 
 
 
-
-Have fun,
-Panos
+[live demo]: https://youtube.com

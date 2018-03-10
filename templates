@@ -1,0 +1,92 @@
+{
+  JobTemplates => [
+                    {
+                      group_name => "Ubuntu 17.10",
+                      machine => { name => "64bit" },
+                      prio => 50,
+                      product => {
+                        arch    => "amd64",
+                        distri  => "ubuntu",
+                        flavor  => "desktop",
+                        group   => "ubuntu-17.10-desktop",
+                        version => "17.10",
+                      },
+                      test_suite => { name => "desktop_live" },
+                    },
+                    {
+                      group_name => "Ubuntu 17.10",
+                      machine => { name => "64bit" },
+                      prio => 50,
+                      product => {
+                        arch    => "amd64",
+                        distri  => "ubuntu",
+                        flavor  => "desktop",
+                        group   => "ubuntu-17.10-desktop",
+                        version => "17.10",
+                      },
+                      test_suite => { name => "desktop_installation" },
+                    },
+                    {
+                      group_name => "Ubuntu 17.10",
+                      machine => { name => "64bit" },
+                      prio => 50,
+                      product => {
+                        arch    => "amd64",
+                        distri  => "ubuntu",
+                        flavor  => "desktop",
+                        group   => "ubuntu-17.10-desktop",
+                        version => "17.10",
+                      },
+                      test_suite => { name => "gnome_tests" },
+                    },
+                  ],
+  Machines     => [
+                    {
+                      backend => "qemu",
+                      name => "64bit",
+                      settings => [
+                        { key => "CDMODEL", value => "ide-cd" },
+                        { key => "HDDSIZEGB", value => 25 },
+                        { key => "QEMUCPU", value => "Haswell-noTSX" },
+                        { key => "QEMUCPUS", value => 1 },
+                        { key => "QEMURAM", value => 2048 },
+                        { key => "QEMUVGA", value => "qxl" },
+                        { key => "WORKER_CLASS", value => "qemu_x86_64" },
+                      ],
+                    },
+                  ],
+  Products     => [
+                    {
+                      arch     => "amd64",
+                      distri   => "ubuntu",
+                      flavor   => "desktop",
+                      settings => [
+                                    { key => "ISO", value => "ubuntu-17.10.1-desktop-amd64.iso" },
+                                  ],
+                      version  => "17.10",
+                    },
+                  ],
+  TestSuites   => [
+                    {
+                      name => "desktop_live",
+                      settings => [{ key => "INSTALL_TYPE", value => "try" }],
+                    },
+                    {
+                      name => "desktop_installation",
+                      settings => [
+                        { key => "INSTALL_TYPE", value => "install" },
+                        { key => "PUBLISH_HDD_1", value => "ubuntu.qcow2" },
+                        { key => "QEMU_COMPRESS_QCOW2", value => 1 },
+                      ],
+                    },
+                    {
+                      name => "gnome_tests",
+                      settings => [
+                        { key => "BOOT_HDD_IMAGE", value => 1 },
+                        { key => "HDD_1", value => "ubuntu.qcow2" },
+                        { key => "START_AFTER_TEST", value => "desktop_installation" },
+                        { key => "TEST_TYPE", value => "GUI" },
+                      ],
+                    },
+                  ],
+}
