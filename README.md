@@ -155,6 +155,6 @@ the results.
 
 
 
-[live demo]: https://youtube.com
+[live demo]: https://youtu.be/oZbCsVpkJSI
 [openQA]: http://open.qa/
 [os-autoinst-distri-opensuse]: https://github.com/os-autoinst/os-autoinst-distri-opensuse
