@@ -61,7 +61,7 @@ seems to be online.
 
 The two docker containers have created two directories
 under the default docker's location for volume storage
-which is `var/lib/docker/volumes`:
+which is `/var/lib/docker/volumes`:
 
 ```bash
 drwxr-xr-x 1 root root    10 Mar  7 16:36 generic-Assets
