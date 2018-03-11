@@ -45,6 +45,13 @@ docker run -d --privileged --name $user-openqa_worker \
               binarysequence/openqa-worker-x86_64
 ```
 
+Save this into a file and execute it:
+
+```bash
+chmod +x script.sh
+sudo ./script.sh  # you need root priv. for docker, unless you have configured it differently
+```
+
 Now go to `http://localhost:80` and login (fake authentication).
 This is the openQA web interface. Make sure that your worker
 seems to be online.
@@ -52,11 +59,11 @@ seems to be online.
 
 ## 2. Pull the tests and the assets
 
-The two docker containers have created two directories:
+The two docker containers have created two directories
+under the default docker's location for volume storage
+which is `var/lib/docker/volumes`:
 
 ```bash
-ls -l /var/lib/docker/volumes
-total 24
 drwxr-xr-x 1 root root    10 Mar  7 16:36 generic-Assets
 drwxr-xr-x 1 root root    10 Mar  7 16:36 generic-Tests
 ```
@@ -73,19 +80,19 @@ Go into `generic-Tests/_data/` and create a folder called `ubuntu`.
 Then go inside that folder and clonde this repository:
 
 ```bash
-cd /var/lib/docker/volumes/generic-Tests/_data/
-mkdir ubuntu
+cd /var/lib/docker/volumes/generic-Tests/_data/; mkdir ubuntu
 sudo git clone https://github.com/drpaneas/ubuntu_qa ubuntu
 ```
 
 ### Download Ubuntu
 
 Go to [URL](https://www.ubuntu.com/desktop/1710) and download
-the ISO for **Ubuntu 17.10**. Then *move* the file into the
+the ISO for **Ubuntu 17.10.1**. Then *move* the file into the
 **assets** directory, and place it under the **iso** folder:
 
 ```bash
-sudo mv ~/Downloads/ubuntu-17.10.1-desktop-amd64.iso /var/lib/docker/volumes/generic-Assets/_data/iso
+ISO="http://el.releases.ubuntu.com/17.10.1/ubuntu-17.10.1-desktop-amd64.iso"
+sudo wget $ISO -P /var/lib/docker/volumes/generic-Assets/_data/iso
 ```
 
 ### Fix permissions
