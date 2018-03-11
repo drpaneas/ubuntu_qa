@@ -15,7 +15,7 @@ See our [live demo].
 
 ## 1. Run openQA container
 
-**Note**: You need docker running and working properly!
+**Note**: You need *docker* and *curl* running and working properly!
 
 Run the following bash script, which will start openQA.
 In case you have a webserver running at 80 or 443, just
